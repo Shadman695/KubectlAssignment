@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-app
+spec:
+  containers:
+  - name: web-app
+    image: 497449888023.dkr.ecr.us-east-1.amazonaws.com/clo835-assignment1:my_app_latest
+    ports:
+    - containerPort: 8080
+    env:
+    - name: DBHOST
+      value: "mysql"              # The service name for MySQL
+    - name: DBPORT
+      value: "3306"
+    - name: DBUSER
+      valueFrom:
+        secretKeyRef:
+          name: db-credentials
+          key: dbuser
+    - name: DBPASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: db-credentials
+          key: dbpassword
+    - name: DBNAME
+      value: "mydatabase"         # The database name you set in MySQL deployment
+  imagePullSecrets:
+  - name: ecr-registry-secret
