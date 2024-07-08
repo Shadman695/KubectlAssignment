@@ -2,14 +2,28 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: mysql
-  labels:
-    app: mysql
+  namespace: my-app
 spec:
   containers:
   - name: mysql
-    image: mysql:5.7
+    image: 497449888023.dkr.ecr.us-east-1.amazonaws.com/clo835-assignment1:my_db_latest
     env:
     - name: MYSQL_ROOT_PASSWORD
-      value: "password"
+      valueFrom:
+        secretKeyRef:
+          name: db-credentials
+          key: dbpassword
+    - name: MYSQL_DATABASE
+      value: "mydatabase"
+    - name: MYSQL_USER
+      valueFrom:
+        secretKeyRef:
+          name: db-credentials
+          key: dbuser
+    - name: MYSQL_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: db-credentials
+          key: dbpassword
     ports:
     - containerPort: 3306
