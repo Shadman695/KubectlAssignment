@@ -19,11 +19,5 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "dbpassword"
-        - name: MYSQL_DATABASE
-          value: "mydatabase"
-        - name: MYSQL_USER
-          value: "dbuser"
-        - name: MYSQL_PASSWORD
-          value: "dbpassword"
         ports:
         - containerPort: 3306
