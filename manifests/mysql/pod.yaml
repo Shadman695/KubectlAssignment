@@ -9,21 +9,6 @@ spec:
     image: 497449888023.dkr.ecr.us-east-1.amazonaws.com/clo835-assignment1:my_db_latest
     env:
     - name: MYSQL_ROOT_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: db-credentials
-          key: dbpassword
-    - name: MYSQL_DATABASE
-      value: "mydatabase"
-    - name: MYSQL_USER
-      valueFrom:
-        secretKeyRef:
-          name: db-credentials
-          key: dbuser
-    - name: MYSQL_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: db-credentials
-          key: dbpassword
+      value: "dbpassword"
     ports:
-    - containerPort: 3306
+    - containerPort: 3306

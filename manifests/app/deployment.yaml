@@ -24,14 +24,8 @@ spec:
         - name: DBPORT
           value: "3306"
         - name: DBUSER
-          valueFrom:
-            secretKeyRef:
-              name: db-credentials
-              key: dbuser
+          value: "dbuser"
         - name: DBPASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: db-credentials
-              key: dbpassword
+          value: "dbpassword"
         - name: DBNAME
           value: "mydatabase"
