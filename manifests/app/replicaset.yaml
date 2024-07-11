@@ -20,12 +20,8 @@ spec:
         - containerPort: 8080
         env:
         - name: DBHOST
-          value: "mysql-service"
+          value: "10.244.0.7"
         - name: DBPORT
           value: "3306"
-        - name: DBUSER
-          value: "dbuser"
-        - name: DBPASSWORD
+        - name: DBPWD
           value: "dbpassword"
-        - name: DBNAME
-          value: "mydatabase"
